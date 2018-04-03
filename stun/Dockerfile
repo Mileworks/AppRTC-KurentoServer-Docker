@@ -1,15 +1,15 @@
 FROM java:8-jre
+LABEL maintainer "MileWorks <borrip0419@gmail.com>"
 
-ENV VERTICLE_FILE build/libs/vertx-blueprint-todo-backend-fat.jar
+ENV STUN_FILE stun-server.jar
 
 # Set the location of the verticles
-ENV VERTICLE_HOME /usr/verticles
+ENV STUN_HOME /usr/stun
 
-EXPOSE 8082
+EXPOSE 1111
 
-COPY $VERTICLE_FILE $VERTICLE_HOME/
-COPY config/config_docker.json $VERTICLE_HOME/
+COPY $STUN_FILE $STUN_HOME/
 
-WORKDIR $VERTICLE_HOME
+WORKDIR $STUN_HOME
 ENTRYPOINT ["sh", "-c"]
-CMD ["java -jar vertx-blueprint-todo-backend-fat.jar -conf config_docker.json"]
+CMD ["java -jar stun-server.jar"]

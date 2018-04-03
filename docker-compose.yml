@@ -1,4 +1,4 @@
-version: "2"
+version: "1.0"
 services:
   redis:
     container_name: vertx-todo-backend_redis

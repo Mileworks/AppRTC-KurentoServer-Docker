@@ -1,15 +1,8 @@
-FROM java:8-jre
+FROM tomcat
+LABEL maintainer "MileWorks <borrip0419@gmail.com>"
 
-ENV VERTICLE_FILE build/libs/vertx-blueprint-todo-backend-fat.jar
+ADD jWebrtc.war /usr/local/tomcat/webapps/
 
-# Set the location of the verticles
-ENV VERTICLE_HOME /usr/verticles
+EXPOSE 8080:8080
 
-EXPOSE 8082
-
-COPY $VERTICLE_FILE $VERTICLE_HOME/
-COPY config/config_docker.json $VERTICLE_HOME/
-
-WORKDIR $VERTICLE_HOME
-ENTRYPOINT ["sh", "-c"]
-CMD ["java -jar vertx-blueprint-todo-backend-fat.jar -conf config_docker.json"]
+CMD ["catalina.sh", "run"]
