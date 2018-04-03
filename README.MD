@@ -1,5 +1,7 @@
 # 基于Kurento Server的AppRTC Docker-compose构建步骤  
-- 说明 ：现在基于此方案搭建的服务大致分为以下三个模块: (每块已经全部打入docker镜像)
+
+- 说明 ：现在基于此方案搭建的服务大致分为以下三个模块: (每块已经全部打入docker镜像)  
+
 1. Signaling Server/Room Server ：
     - Kurento server ：这里使用的官方docker hub 
     - Singnal Server : 
