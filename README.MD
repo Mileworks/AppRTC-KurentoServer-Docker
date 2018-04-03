@@ -14,7 +14,7 @@
     - 指定为上一个目录的webrtc/dockerfile文件
 
 2. TURN Server :    
-使用的是官方hub的镜像  
+使用的是官方hub的镜像  
 
 3. STUN Server(基于java实现):  
 指定为上一个目录的stun/dockerfile文件
