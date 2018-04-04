@@ -39,7 +39,7 @@ Check volume path:
     ```
     【注意配置文件路径映射IP地址修改！】
 
-    - Singnal Server : 使用tomcat ssl [镜像](https://store.docker.com/community/images/unidata/tomcat-docker)  
+    - Singnal Server : 使用 unidata/tomcat-docker [支持SSL的镜像](https://store.docker.com/community/images/unidata/tomcat-docker)  
       使用[jWebrtc](https://github.com/inspiraluna/AppRTC-Kurento)
       主要用于现有客户端（web、ios、安卓）三个端的socket信道通讯 , 这里最终打包成war包之后放入tomcat中(此tomcat需要使用SSL，[配置方法](https://www.oschina.net/question/12_23148))
       现在已经全部打入docker中。  
