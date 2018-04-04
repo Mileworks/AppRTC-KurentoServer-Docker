@@ -3,7 +3,7 @@
 - 说明 ：现在基于此方案搭建的服务大致分为以下三个模块: (每块已经全部打入docker镜像)  
 
 1. STUN Server(基于java实现):  
-构建镜像路径指定为上一个目录的stun/dockerfile文件，使用端口1111    
+构建镜像路径指定为上一个目录的stun/dockerfile文件，使用端口1111    
 单一执行命令如下：
 ```
 docker run --name mileworks-stun -p 1111:1111 -d mileworks/stun  
@@ -46,7 +46,7 @@ Check volume path:
 
       (重)jWebrtc工程代码 WebSocketServer.java 类中439行 需要修改后期部署turnserver/stunserver的url地址，由于客户端中不再配置相应的地址，全部由服务器给。
 
-    - 构建镜像路径指定为上一个目录的webrtc/dockerfile文件,使用tomcat默认SSL端口 8433
+    - 构建镜像路径指定为上一个目录的webrtc/dockerfile文件,使用tomcat默认SSL端口 8433
 
 也可直接执行如下命令:（会执行所有包含组件）
 ```
