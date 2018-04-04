@@ -44,12 +44,13 @@ Check volume path:
       主要用于现有客户端（web、ios、安卓）三个端的socket信道通讯 , 这里最终打包成war包之后放入tomcat中(此tomcat需要使用SSL，[配置方法](https://www.oschina.net/question/12_23148))
       现在已经全部打入docker中。  
 
-      (重)jWebrtc工程代码 WebSocketServer.java 类中439行 需要修改后期部署turnserver/stunserver的url地址，由于客户端中不再配置相应的地址，全部由服务器给。
+      (重)jWebrtc工程代码 WebSocketServer.java 类中439行 需要修改后期部署turnserver/stunserver的url地址，由于客户端中不再配置相应的地址，全部由服务器给。然后重新构建war包，复制到webrtc目录中。
 
     - 构建镜像路径指定为上一个目录的webrtc/dockerfile文件,使用tomcat默认SSL端口 8433
 
 也可直接执行如下命令:（会执行所有包含组件）
 ```
-docker-compose up --build 
+1. 修改turnserver.conf / WebRtcEndpoint.conf.ini /WebSocketServer.java 中三个涉及IP 的地方。
+2. docker-compose up --build 
 ```
 

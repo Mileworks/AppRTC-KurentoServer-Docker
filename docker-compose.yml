@@ -9,7 +9,6 @@ services:
   turn-server:
     container_name: mileworks-turn
     image: steppechange/docker-coturn
-    #指定本地文件
     volumes: 
       - ./coturn/turnserver.conf:/opt/coturn/etc/turnserver.conf
     expose:
@@ -23,8 +22,11 @@ services:
     expose:
       - "8888"
 
-  jweb-singnal-server:
+  unidata-tomcat:
+    image: unidata/tomcat-docker
     container_name: mileworks-signal-server
-    build: ./webrtc
+    volumes:
+      - ./tomcat/keystore.jks:/usr/local/tomcat/conf/keystore.jks
+      - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
     expose:
       - "8443"
