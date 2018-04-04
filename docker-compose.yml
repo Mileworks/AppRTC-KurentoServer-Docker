@@ -28,5 +28,6 @@ services:
     volumes:
       - ./tomcat/keystore.jks:/usr/local/tomcat/conf/keystore.jks
       - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
+      - ./tomcat/jWebrtc.war:/usr/local/tomcat/webapps/jWebrtc.war
     expose:
       - "8443"
