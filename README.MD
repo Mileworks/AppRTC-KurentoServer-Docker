@@ -51,7 +51,7 @@ Check volume path:
 也可直接执行如下命令:（会执行所有包含组件）
 ```
 1. 确认当前服务器IP地址。
-2. 修改turnserver.conf / WebRtcEndpoint.conf.ini /WebSocketServer.java 中三个涉及IP 的地方。
+2. 修改WebRtcEndpoint.conf.ini /WebSocketServer.java 中三个涉及IP 的地方。
 3. docker-compose up --build 
-```
+4. 设置环境变量： export JAVA_OPTS="$JAVA_OPTS -Dkms.url=ws://localhost:8888/kurento -DSTUN_URL=stun:<<stun-ip>>:1111 -DTURN_USERNAME=mileworks -DTURN_PASSWORD=1234qwer -DTURN_URL=turn:<<turn-ip>>:3478"
 
