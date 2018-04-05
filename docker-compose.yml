@@ -3,24 +3,24 @@ services:
   stun-server:
     container_name: mileworks-stun
     build: ./stun
-    expose:
-      - "1111"
+    ports:
+      - 1111:1111
 
   turn-server:
     container_name: mileworks-turn
     image: steppechange/docker-coturn
     volumes: 
       - ./coturn/turnserver.conf:/opt/coturn/etc/turnserver.conf
-    expose:
-      - "3478"
+    ports:
+      - 3478:3478
 
   kurento-media-server:
     container_name: kms
     image: kurento/kurento-media-server
     volumes: 
       - ./kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
-    expose:
-      - "8888"
+    ports:
+      - 8888:8888
 
   unidata-tomcat:
     image: unidata/tomcat-docker
@@ -29,5 +29,5 @@ services:
       - ./tomcat/keystore.jks:/usr/local/tomcat/conf/keystore.jks
       - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
       - ./tomcat/jWebrtc-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/jWebrtc.war
-    expose:
-      - "8443"
+    ports:
+      - 8443:8443
