@@ -8,7 +8,7 @@ services:
 
   turn-server:
     container_name: mileworks-turn
-    image: steppechange/docker-coturn
+    build: ./coturn
     volumes: 
       - ./coturn/turnserver.conf:/opt/coturn/etc/turnserver.conf
     ports:
@@ -22,12 +22,8 @@ services:
     ports:
       - 8888:8888
 
-  unidata-tomcat:
-    image: unidata/tomcat-docker
+  tomcat-server:
     container_name: mileworks-signal-server
-    volumes:
-      - ./tomcat/keystore.jks:/usr/local/tomcat/conf/keystore.jks
-      - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
-      - ./tomcat/jWebrtc-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/jWebrtc.war
+    build: ./tomcat
     ports:
       - 8443:8443

@@ -12,4 +12,4 @@ COPY $STUN_FILE $STUN_HOME/
 
 WORKDIR $STUN_HOME
 ENTRYPOINT ["sh", "-c"]
-CMD ["java -jar stun-server.jar"]
+CMD ["nohup java -jar stun-server.jar &"]
