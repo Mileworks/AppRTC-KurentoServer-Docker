@@ -27,7 +27,7 @@ RUN yes | apt-get install \
 
 # install coTurn
 RUN cd ~ && \
-    git clone https://github.com/SteppeChange/coturn.git && \
+    git clone https://github.com/coturn/coturn && \
     cd coturn && \
     git submodule init && \
     git submodule update && \
