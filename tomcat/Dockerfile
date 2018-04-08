@@ -36,9 +36,6 @@ rm -rf /opt/tomcat/webapps/examples && \
 rm -rf /opt/tomcat/webapps/docs && \
 rm -rf /opt/tomcat/webapps/ROOT
 
-ADD server.xml /opt/tomcat/conf/
-ADD keystore.jks /opt/tomcat/conf/
-
 # Add admin/admin user
 ADD tomcat-users.xml /opt/tomcat/conf/
 
