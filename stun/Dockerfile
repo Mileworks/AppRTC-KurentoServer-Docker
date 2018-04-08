@@ -1,7 +1,7 @@
 FROM java:8-jre
 LABEL maintainer "MileWorks <borrip0419@gmail.com>"
 
-ENV STUN_FILE ./stun-server.jar
+ENV STUN_FILE stun-server.jar
 
 # Set the location of the verticles
 ENV STUN_HOME /usr/stun
