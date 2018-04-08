@@ -36,7 +36,7 @@ RUN cd ~ && \
     sudo make install && \
     mkdir -p /opt/coturn/etc && \
     mkdir -p /opt/coturn/var/log && \
-    mv ./mac/turnserver.conf /opt/coturn/etc/ && \
+    mv turnserver.conf /opt/coturn/etc/ && \
     cd ~
 
 # setup syslog-ng
