@@ -32,9 +32,9 @@ RUN wget --quiet --no-cookies http://mirrors.shu.edu.cn/apache/tomcat/tomcat-8/v
 RUN tar xzvf /tmp/tomcat.tgz -C /opt
 RUN mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat
 RUN rm /tmp/tomcat.tgz
-RUN rm -rf /opt/tomcat/webapps/examples
-RUN rm -rf /opt/tomcat/webapps/docs
-RUN rm -rf /opt/tomcat/webapps/ROOT
+# RUN rm -rf /opt/tomcat/webapps/examples
+# RUN rm -rf /opt/tomcat/webapps/docs
+# RUN rm -rf /opt/tomcat/webapps/ROOT
 
 # Add admin/admin user
 ADD tomcat-users.xml /opt/tomcat/conf/
@@ -46,6 +46,7 @@ ENV PATH $PATH:$CATALINA_HOME/bin
 
 EXPOSE 8080
 EXPOSE 8009
+EXPOSE 8443
 VOLUME "/opt/tomcat/webapps"
 WORKDIR /opt/tomcat
 
