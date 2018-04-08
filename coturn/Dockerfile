@@ -43,12 +43,11 @@ RUN cd ~ && \
 # RUN cd ~ && \
 #     apt-get install -y syslog-ng-core 
 
-#RUN echo "SYSLOGNG_OPTS=\"--no-caps\"" >> /etc/default/syslog-ng
-#ADD ./turn_log.conf /etc/syslog-ng/conf.d/
-#RUN  sudo /usr/sbin/syslog-ng --no-caps
-
 VOLUME /opt/coturn/ 
 
+#RUN echo "SYSLOGNG_OPTS=\"--no-caps\"" >> /etc/default/syslog-ng
+ADD turn_log.conf /opt/coturn/etc/
+#RUN  sudo /usr/sbin/syslog-ng --no-caps
 ENV MIN_PORT=40000
 ENV MAX_PORT=50000
 

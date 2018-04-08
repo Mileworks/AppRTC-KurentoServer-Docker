@@ -2,7 +2,7 @@ FROM jolokia/java-jolokia:7
 LABEL maintainer "MileWorks <borrip0419@gmail.com>"
 
 EXPOSE 8443 8443
-EXPOSE 8080 8787
+EXPOSE 8080 8778
 
 ENV TOMCAT_VERSION 8.0.23
 ENV DEPLOY_DIR /maven
