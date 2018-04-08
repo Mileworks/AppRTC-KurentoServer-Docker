@@ -24,11 +24,7 @@ services:
 
   tomcat-server:
     container_name: mileworks-signal-server
-    image: dordoka/tomcat
+    build: ./tomcat
     ports:
       - "8448:8080"
       - "8443:8443"
-    volumes:
-      - "./tomcat/jWebrtc.war:/opt/tomcat/webapps/jWebrtc.war"
-      - "./tomcat/server.xml:/opt/tomcat/config/server.xml"
-      - "./tomcat/keystore.jks:/opt/tomcat/config/keystore.jks"
