@@ -36,7 +36,7 @@ RUN cd ~ && \
     sudo make install && \
     mkdir -p /opt/coturn/etc && \
     mkdir -p /opt/coturn/var/log && \
-    mv ./turnserver.conf /opt/coturn/etc/ && \
+    # mv ./turnserver.conf /opt/coturn/etc/ && \
     cd ~
 
 # setup syslog-ng
@@ -46,7 +46,7 @@ RUN cd ~ && \
 VOLUME /opt/coturn/ 
 
 #RUN echo "SYSLOGNG_OPTS=\"--no-caps\"" >> /etc/default/syslog-ng
-#ADD turn_log.conf /opt/coturn/etc/
+ADD turn_log.conf /opt/coturn/etc/
 #RUN  sudo /usr/sbin/syslog-ng --no-caps
 ENV MIN_PORT=40000
 ENV MAX_PORT=50000
