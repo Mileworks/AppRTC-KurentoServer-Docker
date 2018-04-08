@@ -19,6 +19,7 @@ services:
     image: kurento/kurento-media-server
     volumes: 
       - ./kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+      - /dev/null /dev/raw1394
     ports:
       - 8888:8888
 
