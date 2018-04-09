@@ -1,61 +1,31 @@
-FROM phusion/baseimage:0.9.14
+FROM      ubuntu:14.04
 LABEL maintainer "MileWorks <borrip0419@gmail.com>"
 
-# XXX: Workaround for https://github.com/docker/docker/issues/6345
-RUN ln -s -f /bin/true /usr/bin/chfn
+RUN apt-get update && apt-get install -y \
+  curl \
+  libevent-core-2.0-5 \
+  libevent-extra-2.0-5 \
+  libevent-openssl-2.0-5 \
+  libevent-pthreads-2.0-5 \
+  libhiredis0.10 \
+  libmysqlclient18 \
+  libpq5 \
+  telnet \
+  wget
 
-#base
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y \
-    	    apt-utils \
-	    sudo \
-            procps \
-            --no-install-recommends
+RUN wget http://turnserver.open-sys.org/downloads/v4.4.2.2/turnserver-4.4.2.2-debian-wheezy-ubuntu-mint-x86-64bits.tar.gz \
+  && tar xzf turnserver-4.4.2.2-debian-wheezy-ubuntu-mint-x86-64bits.tar.gz \
+  && dpkg -i coturn_4.4.2.2-1_amd64.deb
 
-# coTurn + mongo driver pre req
-RUN yes | apt-get install \
-    	    build-essential \
-	    automake \
-	    autoconf \
-	    libtool \
-	    libssl-dev \
-	    libevent-dev \
-            libyajl-dev	 \
-            libcurl4-openssl-dev \
-	    git
-
-# install coTurn
-RUN cd ~ && \
-    git clone https://github.com/coturn/coturn && \
-    cd coturn && \
-    git submodule init && \
-    git submodule update && \
-    ./configure && \
-    make && \
-    sudo make install && \
-    mkdir -p /opt/coturn/etc && \
-    mkdir -p /opt/coturn/var/log && \
-    # mv ./turnserver.conf /opt/coturn/etc/ && \
-    cd ~
-
-# setup syslog-ng
-# RUN cd ~ && \
-#     apt-get install -y syslog-ng-core 
-
-VOLUME /opt/coturn/ 
-
-#RUN echo "SYSLOGNG_OPTS=\"--no-caps\"" >> /etc/default/syslog-ng
-ADD turn_log.conf /opt/coturn/etc/
 ADD turnserver.conf /etc/
 
-#RUN  sudo /usr/sbin/syslog-ng --no-caps
-ENV MIN_PORT=40000
-ENV MAX_PORT=50000
+COPY ./turnserver.sh /turnserver.sh
 
-ADD turn.sh /root/turn.sh
+ENV TURN_USERNAME mileworks
+ENV TURN_PASSWORD 1234qwer
+ENV REALM kurento.org
+ENV NAT false
 
 EXPOSE 3478 3478/udp
 
- # CMD ["/bin/bash", "-c", "service syslog-ng start &&  /usr/local/bin/turnserver -c /opt/coturn/etc/turnserver.conf"]
-CMD ["/bin/bash", "-c", "/root/turn.sh"]
+ENTRYPOINT ["/turnserver.sh"]
