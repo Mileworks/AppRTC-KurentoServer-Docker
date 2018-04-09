@@ -18,13 +18,14 @@ RUN wget http://turnserver.open-sys.org/downloads/v4.4.2.2/turnserver-4.4.2.2-de
   && dpkg -i coturn_4.4.2.2-1_amd64.deb
 
 ADD turnserver.conf /etc/
+ADD coturn /etc/default/
 
 COPY ./turnserver.sh /turnserver.sh
 
 ENV TURN_USERNAME mileworks
 ENV TURN_PASSWORD 1234qwer
 ENV REALM kurento.org
-ENV NAT false
+ENV NAT true
 
 EXPOSE 3478 3478/udp
 
