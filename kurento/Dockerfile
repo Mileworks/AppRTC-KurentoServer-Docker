@@ -18,6 +18,8 @@ RUN	echo "deb http://ubuntu.kurento.org/ trusty kms6" | tee /etc/apt/sources.lis
 EXPOSE 8888
 
 ADD WebRtcEndpoint.conf.ini /etc/kurento/modules/kurento/
+COPY ./entrypoint.sh /entrypoint.sh
+COPY ./healthchecker.sh /healthchecker.sh
 
 HEALTHCHECK --interval=5m --timeout=3s --retries=1 CMD /healthchecker.sh
 
