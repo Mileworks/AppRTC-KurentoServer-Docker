@@ -13,10 +13,12 @@ services:
       - "3478:3478"
 
   kurento-media-server:
-    container_name: mileworks-kms
-    build: ./kurento
+    image: kurento/kurento-media-server
+    container_name: kms
     ports:
-      - "8888:8888"
+      - "8888:8888"  
+    volumes:
+      - ./kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
 
   tomcat-server:
     container_name: mileworks-signal-server
