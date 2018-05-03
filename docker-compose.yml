@@ -7,10 +7,13 @@ services:
       - "1111:1111"
 
   turn-server:
-    container_name: mileworks-turn
-    build: ./coturn
+    image: steppechange/docker-coturn
+    container_name: coturn
     ports:
       - "3478:3478"
+    volumes:
+      - ./coturn/turnserver.conf:/var/lib/docker/vfs/dir/_uidvolume/etc/turnserver.conf
+
 
   kurento-media-server:
     image: kurento/kurento-media-server
