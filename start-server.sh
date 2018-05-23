@@ -2,7 +2,7 @@
 #sed -i 's/\r$//' start-server.sh
 ##################################################
 # Name: start-server.sh
-# Description: 启动所有音频、视频、IM服务
+# Description: 启动所有音频、视频、IM服务 -- 需要单独把每个服务部署好再执行此脚本
 # Script Maintainer: Long-(borrip0419@gmail.com)
 #
 # Last Updated: April 9th 2018
