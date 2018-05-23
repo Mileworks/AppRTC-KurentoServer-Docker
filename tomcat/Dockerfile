@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 LABEL maintainer "MileWorks <borrip0419@gmail.com>"
 
-ENV TOMCAT_VERSION 7.0.85
+ENV TOMCAT_VERSION 7.0.88
 
 # Set locales
 RUN locale-gen en_GB.UTF-8
@@ -33,7 +33,7 @@ rm -rf /var/cache/oracle-jdk8-installer
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Get Tomcat
-RUN wget --quiet --no-cookies http://mirrors.hust.edu.cn/apache/tomcat/tomcat-7/v7.0.85/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz
+RUN wget --quiet --no-cookies http://mirrors.hust.edu.cn/apache/tomcat/tomcat-7/v7.0.88/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz
 RUN tar xzvf /tmp/tomcat.tgz -C /opt
 RUN mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat
 RUN rm /tmp/tomcat.tgz
