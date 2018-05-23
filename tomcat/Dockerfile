@@ -7,6 +7,11 @@ ENV TOMCAT_VERSION 7.0.85
 RUN locale-gen en_GB.UTF-8
 ENV LANG en_GB.UTF-8
 ENV LC_CTYPE en_GB.UTF-8
+ENV TURN_USERNAME mileworks
+ENV TURN_PASSWORD 1234qwer
+ENV TURN_URL turn:127.0.0.1:3478
+ENV STUN_URL stun:127.0.0.1:1111
+
 
 # Fix sh
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh

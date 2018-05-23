@@ -20,9 +20,9 @@ services:
     volumes:
       - ./kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
 
-  # tomcat-server:
-  #   container_name: mileworks-signal-server
-  #   build: ./tomcat
-  #   ports:
-  #     - "8448:8080"
-  #     - "8443:8443"
+  tomcat-server:
+    container_name: mileworks-signal-server
+    build: ./tomcat
+    ports:
+      - "8448:8080"
+      - "8443:8443"
