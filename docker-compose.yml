@@ -12,7 +12,7 @@ services:
     ports:
       - "3478:3478"
     depends_on:
-      - "mileworks-stun"
+      - "stun-server"
 
   kurento-media-server:
     container_name: kms
@@ -20,7 +20,7 @@ services:
     ports:
       - "8888:8888"
     depends_on:
-      - "coturn"
+      - "turn-server"
     volumes:
       - ./kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
 
@@ -28,7 +28,7 @@ services:
     container_name: mileworks-signal-server
     build: ./tomcat
     depends_on:
-      - "kms"
+      - "kurento-media-server"
     ports:
       - "8448:8080"
       - "8443:8443"
