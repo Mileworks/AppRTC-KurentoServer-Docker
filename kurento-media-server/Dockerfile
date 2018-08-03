@@ -1,9 +1,14 @@
+# stream oriented kurento
+#
+# VERSION               4.4.3
+
 FROM      ubuntu:14.04
-LABEL maintainer "MileWorks <borrip0419@gmail.com>"
+MAINTAINER Patxi Gortázar <patxi.gortazar@gmail.com>
+
 
 RUN apt-get update \
   && apt-get -y dist-upgrade \
-	&& apt-get install -y wget
+	&& apt-get install -y wget curl
 
 RUN	echo "deb http://ubuntu.kurento.org/ trusty kms6" | tee /etc/apt/sources.list.d/kurento.list \
 	&& wget -O - http://ubuntu.kurento.org/kurento.gpg.key | apt-key add - \
@@ -15,9 +20,10 @@ RUN	echo "deb http://ubuntu.kurento.org/ trusty kms6" | tee /etc/apt/sources.lis
 EXPOSE 8888
 
 COPY ./entrypoint.sh /entrypoint.sh
+COPY ./healthchecker.sh /healthchecker.sh
 
-ADD WebRtcEndpoint.conf.ini /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+HEALTHCHECK --interval=5m --timeout=3s --retries=1 CMD /healthchecker.sh
 
 ENV GST_DEBUG=Kurento*:5
 
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
