@@ -15,6 +15,7 @@ RUN	echo "deb http://ubuntu.kurento.org/ trusty kms6" | tee /etc/apt/sources.lis
 EXPOSE 8888
 
 COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 ADD WebRtcEndpoint.conf.ini /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
 
