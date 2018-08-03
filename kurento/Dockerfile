@@ -10,6 +10,8 @@ RUN apt-get update \
 && apt-get update \
 && apt-get install -y kurento-media-server-6.0
 
+RUN sudo ln /dev/null /dev/raw1394
+
 ADD WebRtcEndpoint.conf.ini /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
 
 ENTRYPOINT ["/usr/bin/kurento-media-server"]
