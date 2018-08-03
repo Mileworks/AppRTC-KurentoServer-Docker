@@ -2,13 +2,13 @@
 set -e
 
 if [ -n "$KMS_TURN_URL" ]; then
-  echo "turnURL=$KMS_TURN_URL" > /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+  echo "turnURL=mileworks:1234qwer@101.37.27.202:3478" > /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
 fi
 
 if [ -n "$KMS_STUN_IP" -a -n "$KMS_STUN_PORT" ]; then
   # Generate WebRtcEndpoint configuration
-  echo "stunServerAddress=$KMS_STUN_IP" > /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
-  echo "stunServerPort=$KMS_STUN_PORT" >> /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+  echo "stunServerAddress=101.37.27.202" > /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+  echo "stunServerPort=1111" >> /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
 fi
 
 # Remove ipv6 local loop until ipv6 is supported
