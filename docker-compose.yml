@@ -11,6 +11,8 @@ services:
     build: ./coturn
     ports:
       - "3478:3478"
+    volumes:
+      - ./coturn/etc/:/usr/local/coturn/etc/
     depends_on:
       - "stun-server"
 

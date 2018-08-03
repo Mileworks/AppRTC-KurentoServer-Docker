@@ -1,32 +1,12 @@
 FROM      ubuntu:14.04
 LABEL maintainer "MileWorks <borrip0419@gmail.com>"
+RUN apt-get update
 
-RUN apt-get update && apt-get install -y \
-  curl \
-  libevent-core-2.0-5 \
-  libevent-extra-2.0-5 \
-  libevent-openssl-2.0-5 \
-  libevent-pthreads-2.0-5 \
-  libhiredis0.10 \
-  libmysqlclient18 \
-  libpq5 \
-  telnet \
-  wget
+RUN apt-get install -y git build-essential libssl-dev sqlite3\
+    libsqlite3-dev libevent-dev libpq-dev mysql-client libmysqlclient-dev libhiredis-dev
 
-RUN wget http://turnserver.open-sys.org/downloads/v4.4.2.2/turnserver-4.4.2.2-debian-wheezy-ubuntu-mint-x86-64bits.tar.gz \
-  && tar xzf turnserver-4.4.2.2-debian-wheezy-ubuntu-mint-x86-64bits.tar.gz \
-  && dpkg -i coturn_4.4.2.2-1_amd64.deb
+RUN git clone -b 4.5.0.7 https://github.com/coturn/coturn.git /tmp/coturn
 
-ADD turnserver.conf /etc/
-ADD coturn /etc/default/
+RUN cd /tmp/coturn && ./configure --prefix=/usr/local/coturn && make install
 
-COPY ./turnserver.sh /turnserver.sh
-
-ENV TURN_USERNAME mileworks
-ENV TURN_PASSWORD 1234qwer
-ENV REALM kurento.org
-ENV NAT true
-
-EXPOSE 3478 3478/udp
-
-ENTRYPOINT ["/turnserver.sh"]
+CMD ["/usr/local/coturn/bin/turnserver"]
