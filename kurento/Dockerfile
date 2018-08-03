@@ -1,7 +1,8 @@
 FROM      ubuntu:14.04
 LABEL maintainer "MileWorks <borrip0419@gmail.com>"
 
-RUN apt-get update \
+RUN sudo su \
+  && apt-get update \
   && apt-get -y dist-upgrade \
 	&& apt-get install -y wget
 
