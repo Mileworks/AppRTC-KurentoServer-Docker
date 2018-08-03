@@ -14,6 +14,4 @@ fi
 # Remove ipv6 local loop until ipv6 is supported
 cat /etc/hosts | sed '/::1/d' | tee /etc/hosts > /dev/null
 
-ln -s /dev/null /dev/raw1394
-
 exec /usr/bin/kurento-media-server "$@"
