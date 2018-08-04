@@ -7,7 +7,7 @@ services:
       - "1111:1111"
 
   turn-server:
-    image: steppechange/docker-coturn
+    image: synctree/coturn:latest
     # build: ./coturn
     ports:
       - "3478:3478"
@@ -17,14 +17,15 @@ services:
       - "stun-server"
 
   kurento-media-server:
-    container_name: kms
-    build: ./kurento
+    # container_name: kms
+    # build: ./kurento
+    images: kurento/kurento-media-server:xenial-latest
     ports:
       - "8888:8888"
     depends_on:
       - "turn-server"
-    # volumes:
-    #   - ./kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+    volumes:
+      - ./kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
 
   tomcat-server:
     container_name: mileworks-signal-server
