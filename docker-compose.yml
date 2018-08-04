@@ -19,7 +19,7 @@ services:
   kurento-media-server:
     # container_name: kms
     # build: ./kurento
-    images: kurento/kurento-media-server:xenial-latest
+    image: kurento/kurento-media-server:trusty-latest
     ports:
       - "8888:8888"
     depends_on:
