@@ -7,7 +7,7 @@ services:
       - "1111:1111"
 
   turn-server:
-    image: synctree/coturn:latest
+    image: instrumentisto/coturn
     # build: ./coturn
     ports:
       - "3478:3478"
