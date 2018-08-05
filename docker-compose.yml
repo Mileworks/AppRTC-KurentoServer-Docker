@@ -6,32 +6,32 @@ services:
     ports:
       - "1111:1111"
 
-  turn-server:
-    image: instrumentisto/coturn
-    # build: ./coturn
-    ports:
-      - "3478:3478"
-    volumes:
-      - ./coturn/etc/:/usr/local/coturn/etc/
-    depends_on:
-      - "stun-server"
+  # turn-server:
+  #   image: instrumentisto/coturn
+  #   # build: ./coturn
+  #   ports:
+  #     - "3478:3478"
+  #   volumes:
+  #     - ./coturn/etc/:/usr/local/coturn/etc/
+  #   depends_on:
+  #     - "stun-server"
 
-  kurento-media-server:
-    container_name: kms
-    build: ./kurento
-    # image: kurento/kurento-media-server:trusty-latest
-    ports:
-      - "8888:8888"
-    depends_on:
-      - "turn-server"
-    volumes:
-      - ./kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+  # kurento-media-server:
+  #   container_name: kms
+  #   build: ./kurento
+  #   # image: kurento/kurento-media-server:trusty-latest
+  #   ports:
+  #     - "8888:8888"
+  #   depends_on:
+  #     - "turn-server"
+  #   volumes:
+  #     - ./kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
 
   tomcat-server:
     container_name: mileworks-signal-server
     build: ./tomcat
-    depends_on:
-      - "kurento-media-server"
+    # depends_on:
+    #   - "kurento-media-server"
     ports:
       - "8448:8080"
       - "8443:8443"
