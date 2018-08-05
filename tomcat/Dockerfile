@@ -11,7 +11,7 @@ ENV TURN_USERNAME mileworks
 ENV TURN_PASSWORD 1234qwer
 ENV TURN_URL turn:101.37.27.202:3478
 ENV STUN_URL stun:101.37.27.202:1111
-ENV DEFAULT_KMS_WS_URI ws://101.37.27.202:8888/kurento
+ENV DEFAULT_KMS_WS_URI ws://120.27.152.254:8888/kurento
 
 # Fix sh
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
